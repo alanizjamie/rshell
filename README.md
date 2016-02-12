@@ -2,6 +2,7 @@
 CS100 Assignment 2
 # Introduction 
 This program runs as a bash terminal. It functions with the same commands as a standard bash terminal and uses perror() to give feedback on the execution of command.
+My parter and I had many problems with github mostly with committing to eachothers githubs (it kept saying permission denied). So I pulled from his, and then  we commited to our own githubs and then attempted to merge at the end. That is why it may appear that there was only one contributor. We are attempting to fix this.
 #Install Instructions
 To install this project:
 ```
