@@ -8,7 +8,6 @@ To install this project:
 ```
 $ git clone https://github.com/georgeuy2/rshell.git
 $ cd rshell
-$ git checkout exec
 $ make
 $ bin/rshell
 ```
