@@ -7,7 +7,7 @@ Update: It would appear we have fixed the problem.
 #Install Instructions
 To install this project:
 ```
-$ git clone https://github.com/georgeuy2/rshell.git
+$ git clone https://github.com/alanizjamie/rshell.git
 $ cd rshell
 $ git checkout hw1
 $ make
