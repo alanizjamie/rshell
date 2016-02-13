@@ -1,5 +1,6 @@
 COMPILE = g++
 FLAGS = -W -Werror -pedantic -ansi
 
-main: main.cpp
-	$(COMPILE) $(FLAGS) main.cpp
+rshell:
+	mkdir -p bin
+	$(COMPILE) $(FLAGS) src/main.cpp -o bin/rshell 
