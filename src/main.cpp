@@ -46,19 +46,18 @@ class Commands{
 	  bool execforcommand(string& com); //for execute commmand
 	  int connectP(string com, int andCheck, int orCheck); // for parsing connectors
 	  void getarg (string& com, char* arrayargs[]);
-	  static void sigHandle(int signal){}
 };
 
 void Commands::commandP(string& com)
 {
-	int hashfound = com.find("#");		// for comments
+	int hashfound = com.find("#");		//Looks for ocmments 
 	char * temp;
-
-	if(hashfound > -1)
+	if(hashfound > -1) 			//Comment found	
 	{
-			 com.erase(hashfound);
+		com.erase(hashfound);
 	}
 	temp = strtok(&com[0], ";");
+
 	while(temp)
 	{
 	  string temptemp(temp);
@@ -71,9 +70,9 @@ void Commands::commandP(string& com)
 	}
 }
 
-
 int Commands::connectP(string com, int andCheck, int orCheck) // for parsing connectors
 {
+//	cout << "ORCHECK: " << orCheck << endl;
 	const char* locOr = strstr(com.c_str(), "||");
 	const char* locAnd = strstr(com.c_str(), "&&");
 	if(locOr > locAnd && locAnd && locOr)
@@ -120,13 +119,12 @@ int Commands::connectP(string com, int andCheck, int orCheck) // for parsing con
 
 bool Commands::execforcommand(string& com)
 {
-	if (com.compare("exit") == 0) //check for exit	
+	if (com.compare("exit") == 0)	
 	{
 		exit(0);
 	}
 	int location = com.find("cd");
-	
-	if (location > -1 ) //thats a negatory for cd	
+	if (location > -1 )	
 	{
 		string cdir;
 		char* strings;
@@ -134,12 +132,12 @@ bool Commands::execforcommand(string& com)
 		const char* args;
 		string homebase;
 		string temps = "";
-		if (com.size() > 2) //so not ls, cd, etc
+		if (com.size() > 2)
 		{
 			temps = com.substr(location + 3);
 			args = temps.c_str();
 		}
-		if (temps.size() == 0) //could be ls	
+		if (temps.size() == 0)	
 		{
 			char * cdir = getenv("HOME");
 			homebase = "";
@@ -171,7 +169,7 @@ bool Commands::execforcommand(string& com)
 			}
 			return true;
 		}
-		else if (strcmp(args, "-") == 0) //checking args
+		else if (strcmp(args, "-") == 0) 
 		{
 			cdir = "";
 			strings = getenv("OLDPWD");
@@ -251,7 +249,7 @@ bool Commands::execforcommand(string& com)
 		{
 			perror("Error in getcwd()");
 		}
-		int tricheck = chdir(args); //problems with args
+		int tricheck = chdir(args);
 		if (tricheck <= -1) 
 		{
 			perror("error in chdir");
@@ -259,17 +257,16 @@ bool Commands::execforcommand(string& com)
 		
 		return true;
 	}
-	int pro = fork(); //time to fork
-	if (pro <= -1)	//-1 is error
+	int pro = fork();
+	if (pro <= -1)	
 	{
 		perror("ERROR IN CREATING FORK");
 		return false;
 	}
-	else if (pro == 0) //in child process	
+	else if (pro == 0)	
 	{
 		char * arg[2048];
 		getarg(com, arg);
-
 		int res = execvp(*arg, arg);
 		if (res <= -1)	
 		{
@@ -277,7 +274,7 @@ bool Commands::execforcommand(string& com)
 			exit(1);
 		}
 	}
-	else //in parent process
+	else 
 	{
 		int childWait = waitpid(pro, &childWait, 0);
 		if (childWait <= -1)
@@ -294,11 +291,11 @@ bool Commands::execforcommand(string& com)
 
 void Commands::getarg(string& com, char* arrayargs[])
 {
-    char * WOwhitespace = strtok(&com[0], " \t"); //removes whitespace
+    char* WOwhitespace = strtok(&com[0], " \t");
     vector<string> temps;
     while (WOwhitespace)
     {
-        temps.push_back(WOwhitespace); //pushing back without whitespace
+        temps.push_back(WOwhitespace);
         WOwhitespace = strtok(0, " \t");
     }
     for (unsigned i = 0; i < temps.size(); ++i)
@@ -313,9 +310,8 @@ int main(int argc, char * argv[])
 {
 	string commLine;
 	Commands * c = new Commands();	
-	while(1) //wamt jos tp lee[ going because exit will end it here or in functions
+	while(1)
 	 {
-	  prompt();		//prints [USERNAME]@[HOSTNAME]$	
 	  getline(cin, commLine);	
 
 	  if(commLine == "exit")	//EXIT program if user types "exit"
@@ -327,3 +323,4 @@ int main(int argc, char * argv[])
 	return 0;
 }
 
+Status API Training Shop Blog About Pricing
