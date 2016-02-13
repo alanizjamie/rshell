@@ -9,6 +9,7 @@ To install this project:
 ```
 $ git clone https://github.com/georgeuy2/rshell.git
 $ cd rshell
+$ git checkout hw1
 $ make
 $ bin/rshell
 ```
