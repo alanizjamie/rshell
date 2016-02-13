@@ -1,4 +1,4 @@
-!#bin/sh
+!#/bin/sh
 ls #test
 ls -a #test
 echo moose #testing stuff
